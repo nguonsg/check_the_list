@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Check-The-List: A cybersecurity hardening project">
+    <title>Check-The-List - Cybersecurity Hardening</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <header>Check-The-List - Cybersecurity Hardening
+        <nav class="navone">
+            <a href="{% url 'home'%}" class="navbtn">Home</a>
+            <a href="{% url 'tools'%}" class="navbtn">Demo</a>
+            <a href="{% url 'faq'%}"  class="navbtn">Pricing</a>
+            <a href="{% url 'feedback'%}"  class="navbtn">Contact</a>
+            <a href="{% url 'index'%}" class="navbtn">Logout</a>
+
+        </nav>
+    </header>
+    
+    <main>
+        <section class="container">
+            <div class="wrapper"> 
+                <h2>Explore Our Tools</h2>
+                <a href="placeholder.html" class="srtbtn">Start Here!</a> <br><br>
+            </div>
+
+
+            <div class="wrapperdivfour">
+            <details class="detspoil" open>
+                <summary>General Vulnerability Scanners</summary>
+                <a href="#" onclick="openModal('Simple Port Scanner', 'This is a simple port scanning tool.', '../scripts&tools/Simpleportscanner.exe')" class="vulbtn">Port Scanner</a> <br>
+                <a href="placeholder.html" class="vulbtn">Password Policy Scanner</a> <br>
+                <a href="placeholder.html" class="vulbtn">Baseline Security Scanner</a> <br>
+                <a href="placeholder.html" class="vulbtn">Hardware Software Scanner</a> <br>
+                <a href="placeholder.html" class="vulbtn">Sensitive Data Scanner</a> <br>
+                <button class="popup" onclick="togglePopup()">Popup test</button>
+                <!-- Hidden Popup Container -->
+                 <div id ="popup" style="display: none;">
+                    <h2>Popup content</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <button onclick="togglePopup()">&times;</button>
+                 </div>
+
+            </details>
+            <details class="detspoil">
+                <summary>Banking Specific</summary>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+            </details>
+            <details class="detspoil">
+                <summary>Insurance Specific</summary>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+            </details>
+            <details class="detspoil">
+                <summary>Healthcare Specific</summary>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+            </details>
+            <details class="detspoil">
+                <summary>Other</summary>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+                <a href="placeholder.html" class="vulbtn">N/A</a> <br>
+            </details>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <h3>Check-The-List</h3>
+        <p>© 2024  Senior Design Group 22 All rights reserved</p>
+        <br>
+        <p>This website was created by the 2024-2025 Senior Design Group 22. Major contributors include Chris Boyer, Andrew Meyer, Sunheng Nguon, Elisha Stanilevich, and Ahmed Ubdullah.</p>
+    </footer>
+
+<!-- Modal Structure -->
+<div id="scriptModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="scriptTitle"></h2>
+        <p id="scriptDescription"></p>
+        <button id="downloadButton">Download Script</button>
+    </div>
+</div>
+<script src="../scripts.js"></script>
+</body>
+</html>

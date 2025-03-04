@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Check-The-List: A cybersecurity hardening project">
+    <title>Check-The-List - Cybersecurity Hardening</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <header>Check-The-List - Cybersecurity Hardening
+        <nav class="navone">
+            <a href="{% url 'index'%}" class="navbtn">Home</a>
+            <a href="{% url 'demo'%}" class="navbtn">Demo</a>
+            <a href="{% url 'pricing'%}"  class="navbtn">Pricing</a>
+            <a href="{% url 'contact'%}"  class="navbtn">Contact</a>
+            <a href="{% url 'login'%}" class="navbtn">Login</a>
+            <a href="{% url 'signup'%}" class="navbtn">Signup</a>
+
+        </nav>
+    </header>
+
+    
+    <main>
+        <section class="container">
+            <div class="wrapper">
+                <h2>Pricing Plans</h2>
+                <p>Explore our flexible pricing plans, tailored to meet the needs of businesses of all sizes! Whether you require ongoing updates for system security or a one-time solution, we have options that fit your needs. For those relying on our continuous updates, we recommend our annual plan, while the monthly plan is ideal for those seeking a one-time solution.</p>
+            </div>
+        </section>
+
+        <section class="pricingcontainer">
+            <div class="wrapperdivthree">
+                <h1>Yearly Plan</h1>
+                <p>$175</p>
+                <h3>Then $50 yearly, billed annually starting in the second month.</h3>
+            </div>
+
+            <div class="wrapperdivthree">
+                <h1>Quarterly Plan</h1>
+                <p>$125</p>
+                <h3>Then $20 quarterly, billed quarterly starting in the second month.</h3>
+            </div>
+
+            <div class="wrapperdivthree">
+                <h1>Monthly Plan</h1>
+                <p>$75</p>
+                <h3>Then $10 monthly, billed monthly starting in the second month.</h3>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="wrapper">
+                <details class="detspoil">
+                    <summary>End-User License Agreement</summary>
+                    <p>Users of the Check-the-List solution and website are not guaranteed protection from every form of exploitation, this is due to the cybersecurity environment everchanging and our tools not covering every possible vulnerability. Check-the-List users are prohibited from sharing tools, scripts, and files with unauthorized parties, additionally the end user is responsible for the proper and legal usage of our tools. </p> 
+                </details> <br> <br> <br>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <h3>Check-The-List</h3>
+        <p>© 2024  Senior Design Group 22 All rights reserved</p>
+        <br>
+        <p>This website was created by the 2024-2025 Senior Design Group 22. Major contributors include Chris Boyer, Andrew Meyer, Sunheng Nguon, Elisha Stanilevich, and Ahmed Ubdullah.</p>
+    </footer>
+
+</body>
+</html>
