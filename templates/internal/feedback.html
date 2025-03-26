@@ -92,4 +92,34 @@
 
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+    const { createClient } = supabase;
+
+    const supabaseUrl = 'https://zjybmrjtvyhkbsmdpfyg.supabase.co';
+    const supabaseKey = 'your-anon-key';
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    document.getElementById('feedbackForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const quality = document.querySelector('input[name="quality"]:checked').value;
+        const speed = document.querySelector('input[name="speed"]:checked').value;
+        const satisfaction = document.querySelector('input[name="satisfaction"]:checked').value;
+        const comments = document.getElementById('comments').value;
+
+        const { data, error } = await supabase
+            .from('feedback')
+            .insert([{ name, email, quality, speed, satisfaction, comments }]);
+
+        if (error) {
+            console.error('Error inserting data:', error);
+        } else {
+            console.log('Feedback submitted successfully:', data);
+        }
+    });
+</script>
 </html>
