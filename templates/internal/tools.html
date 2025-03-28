@@ -33,11 +33,12 @@
             <div class="wrapperdivfour">
             <details class="detspoil" open>
                 <summary>General Vulnerability Scanners</summary>
-                <a href="#" onclick="openModal('Simple Port Scanner', 'This is a simple port scanning tool.', '../scripts&tools/Simpleportscanner.exe')" class="vulbtn">Port Scanner</a> <br>
-                <a href="placeholder.html" class="vulbtn">Password Policy Scanner</a> <br>
-                <a href="placeholder.html" class="vulbtn">Baseline Security Scanner</a> <br>
-                <a href="placeholder.html" class="vulbtn">Hardware Software Scanner</a> <br>
-                <a href="placeholder.html" class="vulbtn">Sensitive Data Scanner</a> <br>
+<a href="{% static 'scripts&tools/Simpleportscanner.exe' %}" download>Download Port Scanner</a><br>
+<a href="{% static 'scripts&tools/elisha_openport_scanner.ps1' %}" download>Download Open Port Scanner</a><br>
+<a href="{% static 'scripts&tools/elisha_password_checker.ps1' %}" download>Download Password Checker</a><br>
+<a href="{% static 'scripts&tools/Baseline Security Check.ps1' %}" download>Download Baseline Security Check</a><br>
+<a href="{% static 'scripts&tools/Hardware_Software_Survey.zip' %}" download>Download Hardware Software Survey</a><br>
+<a href="{% static 'scripts&tools/Scripting.txt' %}" download>Download Scripting Guide</a><br>
                 <button class="popup" onclick="togglePopup()">Popup test</button>
                 <!-- Hidden Popup Container -->
                  <div id ="popup" style="display: none;">
