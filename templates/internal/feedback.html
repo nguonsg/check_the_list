@@ -15,32 +15,27 @@
         <nav class="navone">
             <a href="{% url 'home'%}" class="navbtn">Home</a>
             <a href="{% url 'tools'%}" class="navbtn">Demo</a>
-            <a href="{% url 'faq'%}"  class="navbtn">Pricing</a>
-            <a href="{% url 'feedback'%}"  class="navbtn">Contact</a>
+            <a href="{% url 'faq'%}" class="navbtn">Pricing</a>
+            <a href="{% url 'feedback'%}" class="navbtn">Contact</a>
             <a href="{% url 'index'%}" class="navbtn">Logout</a>
-
         </nav>
     </header>
 
-    
     <main>
         <section class="container">
             <div class="wrapper">
                 <div class="wrapperdivfeedback">
-                    <h1> Feedback Survey </h1> <br>
-
-
+                    <h1>Feedback Survey</h1><br>
 
                     <form id="feedbackForm">
-                    
                         <label for="name">Name:</label>
                         <input type="text" id="name" name="name" required><br><br>
-                
+
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" required><br><br>
-                
+
                         <br><br><h2>Please rate the following (1 - Poor, 5 - Excellent)</h2><br>
-                
+
                         <label>Quality of Website:</label>
                         <div class="rating-group">
                             <label><input type="radio" name="quality" value="1" required> 1</label>
@@ -49,7 +44,7 @@
                             <label><input type="radio" name="quality" value="4"> 4</label>
                             <label><input type="radio" name="quality" value="5"> 5</label>
                         </div>
-            
+
                         <label>Quality of Tools:</label>
                         <div class="rating-group">
                             <label><input type="radio" name="speed" value="1" required> 1</label>
@@ -58,7 +53,7 @@
                             <label><input type="radio" name="speed" value="4"> 4</label>
                             <label><input type="radio" name="speed" value="5"> 5</label>
                         </div>
-            
+
                         <label>Overall Satisfaction:</label>
                         <div class="rating-group">
                             <label><input type="radio" name="satisfaction" value="1" required> 1</label>
@@ -66,62 +61,59 @@
                             <label><input type="radio" name="satisfaction" value="3"> 3</label>
                             <label><input type="radio" name="satisfaction" value="4"> 4</label>
                             <label><input type="radio" name="satisfaction" value="5"> 5</label>
-                        </div> 
+                        </div>
 
                         <br><br>
-            
-                
+
                         <label for="comments">Additional Comments or Questions:</label><br>
                         <textarea id="comments" name="comments" rows="10" placeholder="Your comments here..."></textarea><br><br>
-                
+
                         <button type="submit">Submit Feedback</button>
                     </form>
-
-
-
                 </div>
-            </div>    
+            </div>
         </section>
     </main>
 
     <footer>
         <h3>Check-The-List</h3>
-        <p>© 2024  Senior Design Group 22 All rights reserved</p>
+        <p>© 2024 Senior Design Group 22 All rights reserved</p>
         <br>
         <p>This website was created by the 2024-2025 Senior Design Group 22. Major contributors include Chris Boyer, Andrew Meyer, Sunheng Nguon, Elisha Stanilevich, and Ahmed Ubdullah.</p>
     </footer>
 
-
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
-    const { createClient } = supabase;
+    window.onload = () => {
+        const supabaseUrl = 'https://zjybmrjtvyhkbsmdpfyg.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpqeWJtcmp0dnloa2JzbWRwZnlnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk1NTg5OTQsImV4cCI6MjA1NTEzNDk5NH0.wadaSZG4k2Ej0Z6YOiBo6jgJ5Zw1r5JP4dncTtwKu8k';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-    const supabaseUrl = 'https://zjybmrjtvyhkbsmdpfyg.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpqeWJtcmp0dnloa2JzbWRwZnlnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk1NTg5OTQsImV4cCI6MjA1NTEzNDk5NH0.wadaSZG4k2Ej0Z6YOiBo6jgJ5Zw1r5JP4dncTtwKu8k';
+        const form = document.getElementById('feedbackForm');
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
 
-    const supabase = createClient(supabaseUrl, supabaseKey);
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const quality = document.querySelector('input[name="quality"]:checked')?.value;
+            const speed = document.querySelector('input[name="speed"]:checked')?.value;
+            const satisfaction = document.querySelector('input[name="satisfaction"]:checked')?.value;
+            const comments = document.getElementById('comments').value;
 
-    document.getElementById('feedbackForm').addEventListener('submit', async (event) => {
-        event.preventDefault();
+            const { data, error } = await supabase
+                .from('feedback')
+                .insert([{ name, email, quality, speed, satisfaction, comments }]);
 
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const quality = document.querySelector('input[name="quality"]:checked').value;
-        const speed = document.querySelector('input[name="speed"]:checked').value;
-        const satisfaction = document.querySelector('input[name="satisfaction"]:checked').value;
-        const comments = document.getElementById('comments').value;
-
-        const { data, error } = await supabase
-            .from('feedback')
-            .insert([{ name, email, quality, speed, satisfaction, comments }]);
-
-        if (error) {
-            console.error('Error inserting data:', error);
-        } else {
-            console.log('Feedback submitted successfully:', data);
-            alert("Feedback submitted!");
-        }
-    });
+            if (error) {
+                console.error('Error inserting data:', error);
+                alert("Something went wrong! Check console.");
+            } else {
+                console.log('Feedback submitted successfully:', data);
+                alert("Feedback submitted successfully!");
+                form.reset(); // Optional: Clear form after successful submit
+            }
+        });
+    };
 </script>
 </html>
